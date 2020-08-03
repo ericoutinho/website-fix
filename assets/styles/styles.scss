@@ -5,6 +5,7 @@ $color-alternative: rgb(127, 140, 141);
 $color-background-1: #f8f8f8;
 $color-background-2: #f0f3f5;
 
+
 html{
     scroll-behavior: smooth;
 }
@@ -14,6 +15,8 @@ body{
     font-weight: 400;
     color: #333;
     font-size: 16px;
+    max-width: 1920px;
+    margin: auto;
 }
 
 h1, h2, h3, h4{
@@ -25,7 +28,63 @@ h1, h2, h3, h4{
     min-height: 100vh;
 }
 
-@import "header.scss";
+// HEADER
+
+header{
+    min-height: 100vh;
+    padding-top: 70px;
+    position: relative;
+    // background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.5)), url("../bg-header-sm.jpg");
+    background-image: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0.5)), url("../bg.jpg");
+    background-position: right center;
+    display: flex;
+    flex-direction: column;
+
+    & .container{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    & .header-image{
+        display: none;
+        position: absolute;
+        width: 50%; height: 100%;
+        right: 0; top: 0;
+        object-fit: cover;
+        object-position: left bottom;
+    }
+
+}
+
+@media (min-width: 992px) {
+    header{
+        .header-image{
+            display: block;
+        }
+
+        & .header-body{
+            // color: white;
+            max-width: 50%;
+        }
+    }
+}
+
+
+.navbar{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    padding: 16px 16px;
+}
+
+.scrolled{
+    background-color: rgba(236, 240, 241, .8);
+    padding: 8px 16px;
+}
+
+
+// FIM DE HEADER
 
 .button{
     display: inline-block;
@@ -121,13 +180,15 @@ h1, h2, h3, h4{
     display: flex;
     align-items: center;
     text-align: center;
+    padding-top: 4rem;
 
     .clip{
         position: absolute;
         left: 0; top: 0;
         width: 100%; height: 100%;
         background-color: $color-background-2;
-        clip-path: polygon(0 25%, 55% 0, 100% 40%, 100% 100%, 0% 100%);
+        // clip-path: polygon(0 25%, 55% 0, 100% 40%, 100% 100%, 0% 100%);
+        clip-path: polygon(0 3rem, 55% 0, 100% 4rem, 100% 100%, 0% 100%);
     }
 }
 
@@ -136,4 +197,54 @@ h1, h2, h3, h4{
 footer{
     background-color: $color-base;
     color: white;
+}
+
+
+/* pace.js */
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+  
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .pace-inactive {
+    display: none;
+  }
+  
+  .pace .pace-progress {
+    background: $color-secondary;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 2px;
+  }
+
+/* Animacoes de entrada */
+.animate{
+    transition: all .5s ease;
+}
+
+.from-left{
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.from-right{
+    transform: translateX(50%);
+    opacity: 0;
+}
+
+.from-top{
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.reveal{
+    transform: translateX(0);
+    opacity: 1;
 }
